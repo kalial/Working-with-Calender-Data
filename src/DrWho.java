@@ -1,11 +1,22 @@
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.format.DateTimeFormatter;
+import java.time.*;
+import java.time.format.*;
 import java.time.temporal.ChronoUnit;
 
+/*
+Invoking the program with a relevant birthday:
+    java 01201934
+produces the output (when run on January 13, 2017):
+    your birthday is: 1934-01-20
+    a SATURDAY
+    you´ve lived for:
+    24 days, 11 months, 82 years
+    you´ve lived for 30309 days, so far
+    you´ll reach 3000 days on 2016-03-10
+    period since Y2K: P17Y12D
+ */
 public class DrWho {
     public static void main(String[] args){
-        DateTimeFormatter f = DateTimeFormatter.ofPattern("MMuddy"); // describe a formate
+        DateTimeFormatter f = DateTimeFormatter.ofPattern("MMddyyyy"); // describe a format
         LocalDate bday = null;
 
         try {
@@ -21,7 +32,7 @@ public class DrWho {
         System.out.println("you´ve lived for: ");
         System.out.println(pl.getDays() + " days, "); // split up a period
         System.out.println(pl.getMonths() + " months, ");
-        System.out.println(pl.getYears() + "years, ");
+        System.out.println(pl.getYears() + " years");
 
         int yearsOld = pl.getYears();
         if (yearsOld < 0 || yearsOld > 119)
@@ -37,3 +48,4 @@ public class DrWho {
         System.out.println("period since Y2K: " + p2);
     }
 }
+
